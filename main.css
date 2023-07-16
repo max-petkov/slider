@@ -1,0 +1,120 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+section {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#loom-companion-mv3 {
+    display: none;
+}
+
+.splide {
+    --max-w: 322px;
+    --min-w: 180px;
+
+    --max-h: 483px;
+    --min-h: 270px;
+
+    --pb: 64px;
+
+    width: 100%;
+    min-height: 100vh;
+    max-width: 1920px;
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    padding-bottom: calc((var(--max-h) - var(--min-h) + var(--pb)) / 2);
+}
+
+.splide__list,
+.splide__track {
+    height: 100%;
+}
+
+.splide__track {
+    overflow: visible;
+}
+
+.splide__list {
+    position: relative;
+}
+
+.splide__slide {
+    position: relative;
+    width: var(--min-w);
+    height: var(--min-h);
+}
+
+.splide__slide  .splide__slide-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;;
+    transform: translate(calc(-50% + var(--translateX, 0px)), -50%) scale(var(--scale, 0.6));
+    
+    background-color: #737373;
+    border-radius: 24px;
+    width: var(--max-w);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: var(--max-h);
+    transition: transform 0.2s linear;
+    transform-origin: center;
+}
+
+.splide__slide  .splide__slide-container span {
+    font-family: sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    border-radius: 50px;
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.splide__slide.inside .splide__slide-container {
+    z-index: 1;
+    border: 3px solid white;
+}
+
+/* Area */
+.area {
+    /* --area-color: rgba(0, 0, 0, 0.108); */
+    /* --area-color: transparent; */
+    content: "";
+    position: fixed;
+    height: 100%;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--area-color);
+    pointer-events: none;
+  }
+  
+  .area:before {
+    content: "";
+    position: fixed;
+    height: 100%;
+    top: 0;
+    left: 50%;
+    width: 0.1px;
+    transform: translateX(-50%);
+    background-color: var(--area-color);
+  }
