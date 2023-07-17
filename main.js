@@ -17,7 +17,7 @@ function slider(config) {
     const options = {
       perPage: 9,
       perMove: 1,
-      start: 18,
+      start: 3,
       wheelSleep: 100,
       arrows: false,
       pagination: false,
@@ -76,20 +76,30 @@ function slider(config) {
         const dir = getPositionRelativeToCenter(slide);
         
         if (insideArea) {
+
+          // 2️⃣ Variant of scaling and adjusting translate
+          let translateX = Math.abs(slide.children[0].getBoundingClientRect().width - slide.children[0].offsetWidth);
+
+          if(window.innerWidth > 991) {
+            slide.children[0].style.setProperty(`--translateX`, (translateX * (rightPositionTrack / 1000) * dir) + "px");
+          } else {
+            slide.children[0].style.setProperty(`--translateX`, (translateX * (rightPositionTrack / 1300) * dir) + "px");
+          }
           
-          const progressArea = Math.round(progress_0_100(Number(leftPositionSlide), leftPositionArea, rightPositionArea - widthSlide));
+         // 2️⃣ Variant of scaling and adjusting translate
+          // const progressArea = Math.round(progress_0_100(Number(leftPositionSlide), leftPositionArea, rightPositionArea - widthSlide));
 
-          if(progressArea >= 25 && progressArea <= 75) {
-            slide.children[0].style.setProperty(`--translateX`, 0 + "px");
-          }
+          // if(progressArea >= 25 && progressArea <= 75) {
+          //   slide.children[0].style.setProperty(`--translateX`, 0 + "px");
+          // }
 
-          if(progressArea < 25) {
-            slide.children[0].style.setProperty(`--translateX`, (((scale * 100) * dir) - gap * 3) + "px");
-          }
+          // if(progressArea < 25) {
+          //   slide.children[0].style.setProperty(`--translateX`, (((scale * 100) * dir) - gap * 3) + "px");
+          // }
 
-          if(progressArea > 75) {
-            slide.children[0].style.setProperty(`--translateX`, (((scale * 100) * dir) + gap * 3) + "px");
-          }
+          // if(progressArea > 75) {
+          //   slide.children[0].style.setProperty(`--translateX`, (((scale * 100) * dir) + gap * 3) + "px");
+          // }
 
           slide.classList.add("inside");
           slide.children[0].style.setProperty(`--scale`, scale);
@@ -162,9 +172,11 @@ function slider(config) {
 
           } else {
 
+            slide.children[0].style.zIndex = -1;
             slide.children[0].style.setProperty(`--scale`, minScale);
             slide.children[0].style.setProperty(`--translateX`, ((startingGap * dir)) + "px");
           }
+          
         }
         
       });
