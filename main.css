@@ -25,9 +25,9 @@ section {
 
     --pb: 64px;
 
-    width: 100%;
+    /* width: 100%; */
     min-height: 100vh;
-    max-width: 1920px;
+    /* max-width: 1920px; */
     width: 100%;
     margin: 0 auto;
     overflow: hidden;
@@ -51,12 +51,14 @@ section {
 }
 
 .splide__slide {
+    /* background-color: red; */
     position: relative;
     width: var(--min-w);
     height: var(--min-h);
 }
 
 .splide__slide  .splide__slide-container {
+    opacity: 1;
     position: absolute;
     top: 50%;
     left: 50%;;
@@ -69,7 +71,8 @@ section {
     align-items: center;
     justify-content: center;
     height: var(--max-h);
-    transition: transform 0.2s linear;
+    transition: transform 0.35s cubic-bezier(0.33, 1, 0.68, 1);
+    /* transition: transform 0.2s linear; */
     transform-origin: center;
 }
 
